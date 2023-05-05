@@ -14,8 +14,9 @@
 
 function(ruy_include_directories NAME DEPS)
   target_include_directories(${NAME}
-      PUBLIC
-      "${PROJECT_SOURCE_DIR}"
+    PUBLIC
+      "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}>"
+      "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
   )
   if (cpuinfo IN_LIST DEPS)
     target_include_directories(${NAME}
